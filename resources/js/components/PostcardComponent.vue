@@ -11,7 +11,7 @@
                 <td>{{postcard.sender}}</td>
                 <td>{{postcard.address}}</td>
                 <td>{{postcard.text}}</td>
-                <td><img :src="'/storage/postcards/' + postcard.image" alt=""></td>
+                <td><img :src="'/storage/postcards/' + postcard.image " ></td>
             </tr>
         </table>
     </div>

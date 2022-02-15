@@ -20,17 +20,18 @@ class GuestController extends Controller
 
     public function store(Request $request){
        
-        $data = $request ->validate([
-            'sender' => 'rquired|string',
-            'address' => 'rquired|string',
-            'text' => 'rquired|string',
-            'image' => 'rquired|image',
+        $data = $request -> validate([
+            'address' => 'required|string',
+            'sender' => 'required|string',
+            'text' => 'required|string',
+            'image' => 'required|image',
         ]);
         
         $imageFile = $data['image'];
         $imageName = rand(100000, 999999) .'_'. time() .'.'. $imageFile -> getClientOriginalExtension();
 
         $imageFile -> storeAs('/postcards/', $imageName, 'public');
+        $data['image'] = $imageName;
 
         $postcard = Postcard::create($data);
 
